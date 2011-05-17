@@ -1,5 +1,5 @@
-package physicsSim;
 
+package physicsSim;
 import java.awt.Color;
 import java.awt.Point;
 
@@ -91,5 +91,12 @@ public class Thing {
 	
 	public void setTime(int t){
 		time = t;
+	}
+	
+	public int getXMax(){
+		return xMax;
+	}
+	public int getYMax(){
+		return yMax;
 	}
 }
