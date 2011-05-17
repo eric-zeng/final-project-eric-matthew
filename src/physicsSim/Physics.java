@@ -17,4 +17,30 @@ public class Physics {
 		t.setTime(time);
 		t.setPoint(new Point(t.getPoint().x, t.getPoint().y + t.getVV()));
 	}
+
+	public void lateralMove(Thing t){
+		int velocity = t.getHV();
+		
+		
+		
+		if(velocity > 0)
+			System.out.println("right");
+		else
+			System.out.println("left");
+		
+	
+		t.setPoint(new Point(t.getPoint().x + velocity, t.getPoint().y));
+		
+	
+		
+	}
+	
+	public void latBounce(Thing t){
+	
+		if(t.getPoint().x > t.getXMax() || t.getPoint().x < 0){
+			t.setHV(t.getHV() * -1);
+			System.out.println("flip");
+		}
+	}
+	
 }
