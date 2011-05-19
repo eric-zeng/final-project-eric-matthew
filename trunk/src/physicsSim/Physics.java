@@ -29,7 +29,9 @@ public class Physics {
 	}
 
 	public void bounce(Thing t){
-		System.out.println(t.getVV());
+		System.out.println("Velocity = " + t.getVV());
+		System.out.println("Y Coordinate = " + t.getPoint().y);
+		System.out.println("--------------------");
 		
 		if((t.getPoint().y > t.getYMax() - t.getRadius() * 2) && (t.getVV() > 0))
 			t.setVV(t.getVV() * -1);
