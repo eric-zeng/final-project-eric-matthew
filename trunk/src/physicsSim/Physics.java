@@ -19,8 +19,7 @@ public class Physics {
 	}
 
 	public void lateralMove(Thing t){
-		int velocity = t.getHV();
-		t.setPoint(new Point(t.getPoint().x + velocity, t.getPoint().y));
+		t.setPoint(new Point(t.getPoint().x + t.getHV(), t.getPoint().y));
 	}
 
 	public void bounce(Thing t){
