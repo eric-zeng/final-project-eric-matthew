@@ -77,8 +77,8 @@ public class Thing {
 		return p;
 	}
 	
-	public void setPoint(Point yLikeANeedle){
-		p = yLikeANeedle;
+	public void setPoint(Point y){
+		p = y;
 	}
 	
 	public int getTime(){

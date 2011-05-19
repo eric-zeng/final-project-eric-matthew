@@ -22,18 +22,17 @@ public class tempRunner {
 		Physics p = new Physics();
 		gui.DrawingPanel panel = new DrawingPanel(300,300);
 		Graphics g = panel.getGraphics();
-		t.setHV(2);		
+		t.setHV(randy.nextInt(5) + 1);		
 		
 		for(int i = 0; i < 2000; i++){
 			//for(Thing t: things){	
+				
 				g.drawOval(t.getPoint().x, t.getPoint().y, t.getRadius() * 2, t.getRadius() * 2);
 				p.bounce(t);
 				p.gravity(t);
 				p.lateralMove(t);
 				
-				
 
-				
 				
 				if(t.getPoint().y > 315){
 					System.out.println(i);
