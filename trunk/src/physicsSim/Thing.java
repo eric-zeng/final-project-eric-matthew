@@ -21,7 +21,7 @@ public class Thing {
 		vVelocity = 0;
 		hVelocity = 0;
 		c = Color.red;
-		p = new Point(0,0);
+		p = new Point(0,100);
 		//p = getClicked
 		time = 0;
 		xMax = 300;
@@ -55,11 +55,7 @@ public class Thing {
 		yMax = 300;
 	}
 	
-	public void bounce(){
-		if(p.y >= yMax || p.y <= 0){
-			vVelocity = - vVelocity;
-		}
-	}
+	
 	
 	public int getVV(){
 		return vVelocity;
