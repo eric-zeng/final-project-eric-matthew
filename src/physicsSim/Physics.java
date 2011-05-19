@@ -23,9 +23,10 @@ public class Physics {
 	}
 
 	public void bounce(Thing t){
-		if(t.getPoint().y >= t.getYMax() - t.getRadius() * 2 || t.getPoint().y <= 0){
+		if((t.getPoint().y > t.getYMax() - t.getRadius() * 2) && (t.getVV() > 0))
 			t.setVV(t.getVV() * -1);
-		}
+		if((t.getPoint().y < 0) && (t.getVV() < 0))
+			t.setVV(t.getVV() * -1);
 		if(t.getPoint().x > t.getXMax() - t.getRadius() * 2 || t.getPoint().x < 0){
 			t.setHV(t.getHV() * -1);
 		}
