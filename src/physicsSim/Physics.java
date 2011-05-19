@@ -4,7 +4,7 @@ import java.awt.Point;
 
 public class Physics {
 	
-	public void gravity(Thing t){
+	/*public void gravity(Thing t){
 		int velocity = t.getVV();
 		int time = t.getTime();
 		if(velocity >= 0){
@@ -16,6 +16,12 @@ public class Physics {
 		}
 		t.setTime(time);
 		t.setPoint(new Point(t.getPoint().x, t.getPoint().y + t.getVV()));
+	}*/
+	
+	public void gravity(Thing t){
+		int acceleration = 1;
+		t.setVV(t.getVV() + acceleration);
+		t.setPoint(new Point(t.getPoint().x, t.getPoint().y + t.getVV()));
 	}
 
 	public void lateralMove(Thing t){
@@ -23,10 +29,15 @@ public class Physics {
 	}
 
 	public void bounce(Thing t){
+		System.out.println(t.getVV());
+		
 		if((t.getPoint().y > t.getYMax() - t.getRadius() * 2) && (t.getVV() > 0))
 			t.setVV(t.getVV() * -1);
+		
 		if((t.getPoint().y < 0) && (t.getVV() < 0))
 			t.setVV(t.getVV() * -1);
+		
+		
 		if(t.getPoint().x > t.getXMax() - t.getRadius() * 2 || t.getPoint().x < 0){
 			t.setHV(t.getHV() * -1);
 		}
