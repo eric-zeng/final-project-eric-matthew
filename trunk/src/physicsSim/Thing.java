@@ -95,4 +95,8 @@ public class Thing {
 	public int getYMax(){
 		return yMax;
 	}
+	
+	public int getRadius(){
+		return radius;
+	}
 }
