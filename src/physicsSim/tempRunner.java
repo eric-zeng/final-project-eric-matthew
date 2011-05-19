@@ -27,10 +27,11 @@ public class tempRunner {
 		for(int i = 0; i < 2000; i++){
 			//for(Thing t: things){	
 				
-				g.drawOval(t.getPoint().x, t.getPoint().y, t.getRadius() * 2, t.getRadius() * 2);
+				
 				p.bounce(t);
 				p.gravity(t);
 				p.lateralMove(t);
+				g.drawOval(t.getPoint().x, t.getPoint().y, t.getRadius() * 2, t.getRadius() * 2);
 				
 
 				
