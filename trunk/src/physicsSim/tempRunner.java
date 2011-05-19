@@ -35,11 +35,11 @@ public class tempRunner {
 				
 
 				
-				if(t.getPoint().y > 315){
+				/*if(t.getPoint().y > 315){
 					System.out.println(i);
 					System.out.println(t.getPoint().y);
 					System.out.println("----------");
-				}
+				}*/
 			//}
 			panel.sleep(20);
 			panel.clear();
