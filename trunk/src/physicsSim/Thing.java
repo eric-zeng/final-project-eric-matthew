@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Point;
 
 
+
 public class Thing {
 	private Color c;
 	private int mass;
