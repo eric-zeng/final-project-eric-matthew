@@ -22,7 +22,11 @@ public class tempRunner {
 		Physics p = new Physics();
 		gui.DrawingPanel panel = new DrawingPanel(300,300);
 		Graphics g = panel.getGraphics();
+		
 		t.setHV(randy.nextInt(5) + 1);		
+		//p.start(t);
+		
+		
 		
 		for(int i = 0; i < 2000; i++){
 			//for(Thing t: things){	
