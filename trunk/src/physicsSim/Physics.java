@@ -4,6 +4,8 @@ import java.awt.Point;
 
 public class Physics {
 	
+	private int acceleration;
+	//private double velocity;
 	/*public void gravity(Thing t){
 		int velocity = t.getVV();
 		int time = t.getTime();
@@ -18,10 +20,18 @@ public class Physics {
 		t.setPoint(new Point(t.getPoint().x, t.getPoint().y + t.getVV()));
 	}*/
 	
+	/*public void start(Thing t){
+		velocity = t.getVV();
+	}*/
+	
 	public void gravity(Thing t){
-		int acceleration = 1;
+		acceleration = 1;
+		//velocity += acceleration;
 		t.setVV(t.getVV() + acceleration);
 		t.setPoint(new Point(t.getPoint().x, t.getPoint().y + t.getVV()));
+		
+		
+			
 	}
 
 	public void lateralMove(Thing t){
@@ -34,7 +44,8 @@ public class Physics {
 		System.out.println("--------------------");
 		
 		if((t.getPoint().y > t.getYMax() - t.getRadius() * 2) && (t.getVV() > 0))
-			t.setVV(t.getVV() * -1);
+			t.setVV(t.getVV() * -1 + 1);
+			
 		
 		if((t.getPoint().y < 0) && (t.getVV() < 0))
 			t.setVV(t.getVV() * -1);
@@ -43,5 +54,8 @@ public class Physics {
 		if(t.getPoint().x > t.getXMax() - t.getRadius() * 2 || t.getPoint().x < 0){
 			t.setHV(t.getHV() * -1);
 		}
+		
+		if(t.getPoint().y > t.getYMax() - 2 * t.getRadius())
+			t.setPoint(new Point(t.getPoint().x, t.getYMax() - 2 * t.getRadius() + 1));
 	}
 }
