@@ -18,15 +18,15 @@ public class tempRunner {
 		}
 		*/
 		
-		Thing t = new Thing();
+		Thing t = new Thing(1,10,-20,0,Color.RED);
 		Physics p = new Physics();
 		gui.DrawingPanel panel = new DrawingPanel(300,300);
 		Graphics g = panel.getGraphics();
 		
-		t.setHV(randy.nextInt(5) + 1);		
+		t.setHV(randy.nextInt(8) + 1);		
 		//p.start(t);
 		
-		
+		g.setColor(Color.RED);
 		
 		for(int i = 0; i < 2000; i++){
 			//for(Thing t: things){	
@@ -35,7 +35,7 @@ public class tempRunner {
 				p.bounce(t);
 				p.gravity(t);
 				p.lateralMove(t);
-				g.drawOval(t.getPoint().x, t.getPoint().y, t.getRadius() * 2, t.getRadius() * 2);
+				g.fillOval(t.getPoint().x, t.getPoint().y, t.getRadius() * 2, t.getRadius() * 2);
 				
 
 				

@@ -38,7 +38,7 @@ public class Thing {
 		vVelocity = vV;
 		hVelocity = hV;
 		c = col;
-		p = new Point(0,0);
+		p = new Point(0,100);
 		time = 0;
 		xMax = 300;
 		yMax = 300;

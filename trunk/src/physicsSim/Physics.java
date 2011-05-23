@@ -2,9 +2,12 @@ package physicsSim;
 import java.awt.Point;
 
 
+
 public class Physics {
 	
 	private int acceleration;
+
+	
 	//private double velocity;
 	/*public void gravity(Thing t){
 		int velocity = t.getVV();
@@ -21,7 +24,7 @@ public class Physics {
 	}*/
 	
 	/*public void start(Thing t){
-		velocity = t.getVV();
+		hVelocity = t.getHV();
 	}*/
 	
 	public void gravity(Thing t){
@@ -43,10 +46,14 @@ public class Physics {
 		System.out.println("Y Coordinate = " + t.getPoint().y);
 		System.out.println("--------------------");
 		
-		if((t.getPoint().y > t.getYMax() - t.getRadius() * 2) && (t.getVV() > 0))
+		if((t.getPoint().y > t.getYMax() - t.getRadius() * 2) && (t.getVV() > 0)){
 			t.setVV(t.getVV() * -1 + 1);
-			
-		
+/*			if(t.getHV() > 0)
+				t.setHV(t.getHV() - 1);
+			else
+				t.setHV(t.getHV() + 1);*/
+		}
+	
 		if((t.getPoint().y < 0) && (t.getVV() < 0))
 			t.setVV(t.getVV() * -1);
 		
