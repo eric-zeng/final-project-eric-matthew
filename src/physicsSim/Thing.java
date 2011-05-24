@@ -7,14 +7,12 @@ import java.awt.Point;
 
 public class Thing {
 	private Color c;
-	private int mass;
+	private double mass;
 	private int radius;
-	private int vVelocity;
-	private int hVelocity;
+	private double vVelocity;
+	private double hVelocity;
 	private int time;
 	private Point p;
-	private int xMax;
-	private int yMax;
 	
 	public Thing(){
 		mass = 10;
@@ -25,11 +23,9 @@ public class Thing {
 		p = new Point(0,100);
 		//p = getClicked
 		time = 0;
-		xMax = 300;
-		yMax = 300;
 	}
 	
-	public Thing(int m, int r, int vV, int hV, Color col) throws IllegalArgumentException{
+	public Thing(double m, int r, double vV, double hV, Color col) throws IllegalArgumentException{
 		if(m <= 0 || r <= 0){
 			throw new IllegalArgumentException();
 		}
@@ -40,8 +36,6 @@ public class Thing {
 		c = col;
 		p = new Point(0,100);
 		time = 0;
-		xMax = 300;
-		yMax = 300;
 	}
 	
 	public Thing(Color col){
@@ -52,25 +46,23 @@ public class Thing {
 		c = col;
 		p = new Point(0,0);
 		time = 0;
-		xMax = 300;
-		yMax = 300;
 	}
 	
 	
 	
-	public int getVV(){
+	public double getVV(){
 		return vVelocity;
 	}
 	
-	public void setVV(int vV){
+	public void setVV(double vV){
 		vVelocity = vV;
 	}
 	
-	public int getHV(){
+	public double getHV(){
 		return hVelocity;
 	}
 	
-	public void setHV(int hV){
+	public void setHV(double hV){
 		hVelocity = hV;
 	}
 	
@@ -88,13 +80,6 @@ public class Thing {
 	
 	public void setTime(int t){
 		time = t;
-	}
-	
-	public int getXMax(){
-		return xMax;
-	}
-	public int getYMax(){
-		return yMax;
 	}
 	
 	public int getRadius(){

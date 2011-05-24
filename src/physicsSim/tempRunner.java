@@ -18,12 +18,12 @@ public class tempRunner {
 		}
 		*/
 		
-		Thing t = new Thing(1,10,-20,0,Color.RED);
-		Physics p = new Physics();
+		Thing t = new Thing(1,10,0,0,Color.RED);
+		Physics p = new Physics(300,300);
 		gui.DrawingPanel panel = new DrawingPanel(300,300);
 		Graphics g = panel.getGraphics();
 		
-		t.setHV(randy.nextInt(8) + 1);		
+		t.setHV(3);		
 		//p.start(t);
 		
 		g.setColor(Color.RED);
