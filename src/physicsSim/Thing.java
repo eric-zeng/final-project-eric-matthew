@@ -85,4 +85,8 @@ public class Thing {
 	public int getRadius(){
 		return radius;
 	}
+	
+	public Color getColor(){
+		return c;
+	}
 }

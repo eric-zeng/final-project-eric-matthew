@@ -21,7 +21,7 @@ public class SwingRunner {
 		int height = 480;
 		
 		Physics p = new Physics(width, height);
-		Thing t = new Thing(1,50,0,4,Color.RED);
+		Thing t = new Thing(1,15,0,4,Color.RED);
 		//Thing h = new Thing(1,40,-5,4, Color.BLUE);
 		//h.setPoint(new Point(100, 20));
 		ArrayList<Thing> things = new ArrayList<Thing>();
