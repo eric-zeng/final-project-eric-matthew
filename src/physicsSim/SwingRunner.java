@@ -21,12 +21,14 @@ public class SwingRunner {
 		int height = 480;
 		
 		Physics p = new Physics(width, height);
-		Thing t = new Thing(1,15,0,4,Color.RED);
-		//Thing h = new Thing(1,40,-5,4, Color.BLUE);
-		//h.setPoint(new Point(100, 20));
+		/*Thing t = new Thing(1,15,0,4,Color.RED);
+		Thing h = new Thing(1,40,-5,4, Color.BLUE);
+		h.setPoint(new Point(100, 20));*/
 		ArrayList<Thing> things = new ArrayList<Thing>();
-		things.add(t);
-		//things.add(h);
+		for(int i = 0; i < 200; i++){
+			Thing t = new Thing(true);
+			things.add(t);
+		}
 		
 //Graphics initialization
 		

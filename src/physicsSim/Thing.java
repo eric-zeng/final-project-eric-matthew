@@ -2,6 +2,7 @@
 package physicsSim;
 import java.awt.Color;
 import java.awt.Point;
+import java.util.Random;
 
 
 
@@ -45,6 +46,17 @@ public class Thing {
 		hVelocity = 0;
 		c = col;
 		p = new Point(0,0);
+		time = 0;
+	}
+	
+	public Thing (boolean random){
+		Random rand = new Random();
+		mass = 1;
+		radius = rand.nextInt(60) + 1;
+		vVelocity = rand.nextInt(30);
+		hVelocity = rand.nextInt(30);
+		c = new Color(rand.nextInt(254) + 1, rand.nextInt(254) + 1, rand.nextInt(254) + 1);
+		p = new Point(rand.nextInt(580), rand.nextInt(420));
 		time = 0;
 	}
 	
