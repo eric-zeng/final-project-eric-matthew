@@ -20,7 +20,8 @@ public class SwingRunner {
 		int width = 480;
 		
 		Physics p = new Physics(height, width);
-		Thing t = new Thing(1,10,0,0,Color.RED);
+		Thing t = new Thing(1,30,0,0,Color.RED);
+		t.setHV(4);
 		ArrayList<Thing> things = new ArrayList<Thing>();
 		things.add(t);
 		
@@ -31,7 +32,7 @@ public class SwingRunner {
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);
 		
-		JComponent c = new DrawComponent(things);
+		JComponent c = new DrawComponent(things, p);
 		f.add(c);
 	}
 
