@@ -25,7 +25,7 @@ public class SwingRunner {
 		Thing h = new Thing(1,40,-5,4, Color.BLUE);
 		h.setPoint(new Point(100, 20));*/
 		ArrayList<Thing> things = new ArrayList<Thing>();
-		for(int i = 0; i < 200; i++){
+		for(int i = 0; i < 1; i++){
 			Thing t = new Thing(true);
 			things.add(t);
 		}

@@ -2,13 +2,15 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.JComponent;
 
 import physicsSim.*;
 
-public class DrawComponent extends JComponent{
+public class DrawComponent extends JComponent implements MouseListener{
 	
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Thing> things;
@@ -17,6 +19,7 @@ public class DrawComponent extends JComponent{
 	public DrawComponent(ArrayList<Thing> things, Physics p){
 		this.things = things;
 		this.p = p;
+		addMouseListener(this);
 	}
 	
 	public void updatePositions(){
@@ -50,6 +53,36 @@ public class DrawComponent extends JComponent{
         
 		updatePositions();
 		
+		
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		things.add(new Thing(e.getX(), e.getY()));
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 
