@@ -34,13 +34,14 @@ public class DrawComponent extends JComponent{
 	
 	public void paintComponent(Graphics g){
 		g.setColor(Color.RED);
+		g.drawRect(0, 0, 640, 480);
 		for(Thing t : things){
 			int x = t.getPoint().x;
 			int y = t.getPoint().y;
-			int height = t.getRadius();
-			int width = t.getRadius();
+			int radius = t.getRadius();
 			
-			g.fillOval(x, y, height, width);
+			
+			g.fillOval(x, y, radius * 2, radius * 2);
 		}
 		
 		try { 
