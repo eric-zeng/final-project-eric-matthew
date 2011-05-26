@@ -11,6 +11,7 @@ public class Frame extends JFrame{
 		super("Physics Simulator");
 		setSize(height, width);
 		
+		
 	}
 	
 }
