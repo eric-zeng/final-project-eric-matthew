@@ -24,6 +24,9 @@ public class DrawComponent extends JComponent{
 			p.bounce(t);
 			p.gravity(t);
 			p.lateralMove(t);
+			for(Thing test: things){
+				p.collision(t,test);
+			}
 			
 		}
 		repaint();

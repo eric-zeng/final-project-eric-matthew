@@ -1,6 +1,7 @@
 package physicsSim;
 
 import java.awt.Color;
+import java.awt.Point;
 import java.util.ArrayList;
 
 import javax.swing.JComponent;
@@ -16,14 +17,16 @@ public class SwingRunner {
 		
 //Physics initialization
 		
-		int height = 640;
+		int height = 648;
 		int width = 480;
 		
 		Physics p = new Physics(height, width);
-		Thing t = new Thing(1,30,0,0,Color.RED);
-		t.setHV(4);
+		Thing t = new Thing(1,30,0,4,Color.RED);
+		Thing h = new Thing(1,40,-5,4, Color.BLUE);
+		h.setPoint(new Point(100, 20));
 		ArrayList<Thing> things = new ArrayList<Thing>();
 		things.add(t);
+		things.add(h);
 		
 //Graphics initialization
 		
