@@ -93,7 +93,10 @@ public class Physics {
 		double distance = Math.sqrt(Math.pow(c1.x - c2.x, 2) + Math.pow(c1.y - c2.y, 2));
 		
 		if(distance < r1 + r2){
-			
+			t1.setVV(t1.getVV() * -1);
+			t2.setVV(t2.getVV() * -1);
+			t1.setHV(t1.getHV() * -1);
+			t2.setHV(t2.getHV() * -1);
 		}
 	}
 }
