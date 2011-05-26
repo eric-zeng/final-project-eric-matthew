@@ -83,4 +83,17 @@ public class Physics {
 		if(t.getPoint().y > yMax - 2 * t.getRadius())
 			t.setPoint(new Point(t.getPoint().x, yMax - 2 * t.getRadius() + 1));
 	}
+	
+	public void collision(Thing t1, Thing t2){
+		int r1 = t1.getRadius();
+		int r2 = t2.getRadius();
+		Point c1 = new Point(t1.getPoint().x + r1, t1.getPoint().y + r1);
+		Point c2 = new Point(t2.getPoint().x + r2, t2.getPoint().y + r2);
+		
+		double distance = Math.sqrt(Math.pow(c1.x - c2.x, 2) + Math.pow(c1.y - c2.y, 2));
+		
+		if(distance < r1 + r2){
+			
+		}
+	}
 }
