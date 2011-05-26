@@ -17,25 +17,27 @@ public class SwingRunner {
 		
 //Physics initialization
 		
-		int height = 648;
-		int width = 480;
+		int width = 640;
+		int height = 480;
 		
-		Physics p = new Physics(height, width);
-		Thing t = new Thing(1,30,0,4,Color.RED);
-		Thing h = new Thing(1,40,-5,4, Color.BLUE);
-		h.setPoint(new Point(100, 20));
+		Physics p = new Physics(width, height);
+		Thing t = new Thing(1,50,0,4,Color.RED);
+		//Thing h = new Thing(1,40,-5,4, Color.BLUE);
+		//h.setPoint(new Point(100, 20));
 		ArrayList<Thing> things = new ArrayList<Thing>();
 		things.add(t);
-		things.add(h);
+		//things.add(h);
 		
 //Graphics initialization
 		
 		
-		JFrame f = new Frame(height, width);
+		JFrame f = new Frame(width + 9, height + 35);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		f.setVisible(true);
 		
 		JComponent c = new DrawComponent(things, p);
+		c.setDoubleBuffered(true);
 		f.add(c);
 	}
 
