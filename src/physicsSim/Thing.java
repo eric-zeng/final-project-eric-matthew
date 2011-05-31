@@ -111,4 +111,18 @@ public class Thing {
 	public Color getColor(){
 		return c;
 	}
+	
+	public double getVAngle(){
+		double dv = getVV();
+		double dh = getHV();
+		double hyp = Math.sqrt(dv*dv + dh*dh);
+		return Math.acos(dh/hyp);
+	}
+	
+	public double getCollAngle(Thing other){
+		Point otherPoint = other.getPoint();
+		double dist = other.getRadius() + radius;
+		double opposite = otherPoint.y - p.y;
+		return Math.asin(dist/opposite);
+	}
 }
