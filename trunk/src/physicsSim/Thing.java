@@ -3,6 +3,7 @@ package physicsSim;
 import java.awt.Color;
 import java.awt.Point;
 import java.util.Random;
+import java.util.Vector;
 
 
 
@@ -119,10 +120,25 @@ public class Thing {
 		return Math.acos(dh/hyp);
 	}
 	
+	public boolean isColliding(Thing other){
+		return (radius + other.getRadius() >= Math.sqrt(Math.pow(p.x + other.getPoint().x, 2))+ Math.pow(p.y + other.getPoint().y, 2));
+	}
+	
 	public double getCollAngle(Thing other){
 		Point otherPoint = other.getPoint();
 		double dist = other.getRadius() + radius;
 		double opposite = otherPoint.y - p.y;
 		return Math.asin(dist/opposite);
 	}
-}
+	
+	public void collVector(Thing other){
+		double angle = getCollAngle(other);
+		if(hVelocity + vVelocity > other.getHV() + other.getVV()){
+			double newAngle = angle + 90;
+			
+		}else{
+			
+		}
+	}
+	
+	}
