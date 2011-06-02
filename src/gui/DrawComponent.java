@@ -8,6 +8,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JComponent;
 
 import physicsSim.*;
@@ -20,10 +21,8 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 	private int time;
 	private int timeStart;
 	private Point startPoint;
-	private int counter;
 		
 	public DrawComponent(ArrayList<Thing> things, Physics p){
-		counter = 0;
 		this.things = things;
 		this.p = p;
 		addMouseListener(this);
@@ -67,7 +66,7 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		//things.add(new Thing(true, e.getX(), e.getY()));
+		things.add(new Thing(true, e.getX(), e.getY()));
 	}
 
 	@Override
