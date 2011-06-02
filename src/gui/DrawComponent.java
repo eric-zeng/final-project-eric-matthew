@@ -20,8 +20,10 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 	private int time;
 	private int timeStart;
 	private Point startPoint;
+	private int counter;
 		
 	public DrawComponent(ArrayList<Thing> things, Physics p){
+		counter = 0;
 		this.things = things;
 		this.p = p;
 		addMouseListener(this);
@@ -65,7 +67,7 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		things.add(new Thing(e.getX(), e.getY()));
+		things.add(new Thing(true, e.getX(), e.getY()));
 	}
 
 	@Override
@@ -122,11 +124,9 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		System.out.println("Whoa dude");
-		for(Thing t: things){
+	/*	for(Thing t: things){
 			Point p = t.getPoint();
 			int d = 2 * t.getRadius();
-			
 			
 			//if the mouse is in the square around the circle
 			if((startPoint.x > p.x) && (startPoint.x < p.x + d) &&
@@ -134,16 +134,14 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 				t.setPoint(new Point(e.getX() - t.getRadius(), e.getY() - t.getRadius()));
 			}
 				
-		}
-			
-		
-		
+		}*/
+				
 	}
+	
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 
 }
