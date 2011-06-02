@@ -84,7 +84,7 @@ public class Physics {
 			t.setPoint(new Point(t.getPoint().x, yMax - 2 * t.getRadius() + 1));
 	}
 	
-	public void collision(Thing t1, Thing t2){
+/*	public void collision(Thing t1, Thing t2){
 		int r1 = t1.getRadius();
 		int r2 = t2.getRadius();
 		Point c1 = new Point(t1.getPoint().x + r1, t1.getPoint().y + r1);
@@ -98,5 +98,9 @@ public class Physics {
 			t1.setHV(t1.getHV() * -1);
 			t2.setHV(t2.getHV() * -1);
 		}
+	}*/
+	
+	public boolean isColliding(Thing a, Thing b){
+		return (a.getRadius() + b.getRadius() >= Math.sqrt((Math.pow(a.getPoint().x - b.getPoint().x, 2)) + (Math.pow(a.getPoint().y - b.getPoint().y, 2)))); 
 	}
 }

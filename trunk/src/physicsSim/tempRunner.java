@@ -38,7 +38,7 @@ public class tempRunner {
 				p.gravity(t);
 				p.lateralMove(t);
 				for(Thing test: things){
-					p.collision(t,test);
+					//p.collision(t,test);
 				}
 				g.fillOval(t.getPoint().x, t.getPoint().y, t.getRadius() * 2, t.getRadius() * 2);
 				

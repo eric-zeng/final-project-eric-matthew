@@ -71,6 +71,17 @@ public class Thing {
 		time = 0;
 	}
 	
+	public Thing(boolean random, int x, int y){
+		Random rand = new Random();
+		mass = 1;
+		radius = rand.nextInt(60) + 10;
+		vVelocity = 0;
+		hVelocity = 0;
+		c = new Color(rand.nextInt(254) + 1, rand.nextInt(254) + 1, rand.nextInt(254) + 1);
+		p = new Point(x, y);
+		time = 0;
+	}
+	
 	
 	
 	public double getVV(){
