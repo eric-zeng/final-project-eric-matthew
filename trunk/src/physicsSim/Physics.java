@@ -103,4 +103,18 @@ public class Physics {
 	public boolean isColliding(Thing a, Thing b){
 		return (a.getRadius() + b.getRadius() >= Math.sqrt((Math.pow(a.getPoint().x - b.getPoint().x, 2)) + (Math.pow(a.getPoint().y - b.getPoint().y, 2)))); 
 	}
+	
+	public void collisionVelocity (Thing a, Thing b){
+		Vector av = new Vector (a.getHV(), a.getVV());
+		Vector bv = new Vector (b.getHV(), b.getVV());
+		
+		av.setMagnitude((av.getMagnitude() * (a.getMass() - b.getMass()) + (2 * b.getMass() * bv.getMagnitude())) / (a.getMass() + b.getMass()));
+		bv.setMagnitude((bv.getMagnitude() * (b.getMass() - a.getMass()) + (2 * a.getMass() * av.getMagnitude())) / (a.getMass() + b.getMass()));
+		
+		a.setHV(av.getVecHV());
+		a.setVV(av.getVecVV());
+		b.setHV(bv.getVecHV());
+		b.setVV(bv.getVecVV());
+	}
+	
 }

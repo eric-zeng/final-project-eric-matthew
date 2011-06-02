@@ -151,5 +151,13 @@ public class Thing {
 			
 		}
 	}
-	
+
+	public void setColor(Color color) {
+		c = color;
 	}
+	
+	public double getMass(){
+		return mass;
+	}
+	
+}
