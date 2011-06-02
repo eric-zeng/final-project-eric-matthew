@@ -53,18 +53,18 @@ public class Physics {
 	}
 
 	public void bounce(Thing t){
-		System.out.println("Velocity = " + t.getVV());
+	/*	System.out.println("Velocity = " + t.getVV());
 		System.out.println("Y Coordinate = " + t.getPoint().y);
-		System.out.println("--------------------");
+		System.out.println("--------------------");*/
 		
 		//for bouncing on top
 		
 		if((t.getPoint().y > yMax - t.getRadius() * 2) && (t.getVV() > 0)){
 			t.setVV(t.getVV() * -1 + 1);
 			if(t.getHV() > 0)
-				t.setHV(t.getHV() - 0.01);
+				t.setHV(t.getHV() - 0.02);
 			else
-				t.setHV(t.getHV() + 0.01);
+				t.setHV(t.getHV() + 0.02);
 		}
 		
 		//for bouncing on bottom
