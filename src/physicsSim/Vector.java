@@ -28,4 +28,12 @@ public class Vector {
 	public double getVecVV(){
 		return magnitude * Math.sin(angle);
 	}
+	
+	public void setAngle(double angle){
+		this.angle = angle;
+	}
+	
+	public void setMagnitude (double magnitude){
+		this.magnitude = magnitude;
+	}
 }
