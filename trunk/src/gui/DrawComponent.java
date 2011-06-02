@@ -67,7 +67,7 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		things.add(new Thing(true, e.getX(), e.getY()));
+		//things.add(new Thing(true, e.getX(), e.getY()));
 	}
 
 	@Override
