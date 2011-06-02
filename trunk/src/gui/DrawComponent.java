@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -30,13 +31,19 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 	}
 	
 	public void updatePositions(){
-		for(Thing t: things){
+		for(int i = 0; i < things.size(); i++){
+			Thing t = things.get(i);
 			p.bounce(t);
 			p.gravity(t);
 			p.lateralMove(t);
-			//for(Thing test: things){
-				//p.collision(t,test);
-			//}
+			for(int j = i + 1; j < things.size(); j++){
+				Thing test = things.get(j);
+			//	Random r = new Random();
+				if(p.isColliding(t,test)){
+			//		System.out.println("Whoa man");
+			//		t.setColor(new Color(r.nextInt(254), r.nextInt(254), r.nextInt(254)));
+				}
+			}
 			
 		}
 		time++;
