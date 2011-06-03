@@ -40,7 +40,8 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 				Thing test = things.get(j);
 			//	Random r = new Random();
 				if(p.isColliding(t,test)){
-				//	p.collisionVelocity(t, test);
+					p.collisionVelocity(t, test);
+					p.collisionDirection(t, test);
 				}
 			}
 			
@@ -50,7 +51,6 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 	}
 	
 	public void paintComponent(Graphics g){
-		g.drawRect(0, 0, 640, 480);
 		for(Thing t : things){
 			int x = t.getPoint().x;
 			int y = t.getPoint().y;
