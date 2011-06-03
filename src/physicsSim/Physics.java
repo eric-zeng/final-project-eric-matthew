@@ -124,4 +124,20 @@ public class Physics {
 		b.setVV(bv.getVecVV());
 	}
 	
+	public void collisionDirection(Thing a, Thing b){
+		Vector av = new Vector (a.getHV(), a.getVV());
+		Vector bv = new Vector (b.getHV(), b.getVV());
+		
+		double collAngle = Math.asin((a.getPoint().y - b.getPoint().y) / (Math.sqrt((Math.pow(a.getPoint().x - b.getPoint().x, 2)) + (Math.pow(a.getPoint().y - b.getPoint().y, 2)))));
+		
+		av.setAngle(collAngle + 90);
+		bv.setAngle(collAngle);
+		
+		a.setHV(av.getVecHV());
+		a.setVV(av.getVecVV());
+		b.setHV(bv.getVecHV());
+		b.setVV(bv.getVecVV());
+		
+	}
+	
 }
