@@ -40,8 +40,7 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 				Thing test = things.get(j);
 			//	Random r = new Random();
 				if(p.isColliding(t,test)){
-					p.collisionVelocity(t, test);
-					p.collisionDirection(t, test);
+				//	p.collisionVelocity(t, test);
 				}
 			}
 			
@@ -51,6 +50,7 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 	}
 	
 	public void paintComponent(Graphics g){
+		g.drawRect(0, 0, 640, 480);
 		for(Thing t : things){
 			int x = t.getPoint().x;
 			int y = t.getPoint().y;
@@ -71,7 +71,11 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		things.add(new Thing(true, e.getX(), e.getY()));
+		if(e.getButton() == 1){
+			things.add(new Thing(true, e.getX(), e.getY()));
+		}else if(e.getButton() == 3){
+			addThirty();
+		}
 	}
 
 	@Override
@@ -82,7 +86,7 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		//addOneHundred();
+		//addThirty();
 	}
 
 	@Override
@@ -146,8 +150,8 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 	public void mouseMoved(MouseEvent e) {
 	}
 	
-	public void addOneHundred(){
-		for(int i = 0; i < 100; i++){
+	public void addThirty(){
+		for(int i = 0; i < 30; i++){
 			things.add(new Thing(true));
 		}
 	}
