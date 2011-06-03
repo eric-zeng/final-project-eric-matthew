@@ -50,7 +50,6 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 	}
 	
 	public void paintComponent(Graphics g){
-		
 		g.drawRect(0, 0, 640, 480);
 		for(Thing t : things){
 			int x = t.getPoint().x;
@@ -83,8 +82,7 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		addOneHundred();
-		
+		//addOneHundred();
 	}
 
 	@Override
@@ -146,7 +144,6 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		// TODO Auto-generated method stub
 	}
 	
 	public void addOneHundred(){

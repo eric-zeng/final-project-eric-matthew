@@ -1,17 +1,20 @@
 package physicsSim;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import gui.DrawComponent;
 import gui.Frame;
 
 public class SwingRunner {
-
 	public static void main(String[] args) {
 		
 		
@@ -33,14 +36,23 @@ public class SwingRunner {
 //Graphics initialization
 		
 		
-		JFrame f = new Frame(width + 9, height + 35);
+		JFrame f = new Frame(width + 9, height + 35 + 100);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
 		f.setVisible(true);
 		
+		JPanel panel = new JPanel(new BorderLayout());
 		JComponent c = new DrawComponent(things, p);
 		c.setDoubleBuffered(true);
-		f.add(c);
+		panel.add(c);
+		panel.setVisible(true);
+
+		f.add(panel);
+		
+		//JFrame f2 = new Frame(100, 100);
+		
+	/*	JButton b = new JButton("Hello");
+		f2.add(b);
+		f2.setVisible(true);*/
 	}
 
 }
