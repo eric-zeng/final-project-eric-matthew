@@ -72,9 +72,16 @@ public class Physics {
 		if((t.getPoint().y < 0) && (t.getVV() < 0))
 			t.setVV(t.getVV() * -1);
 		
-		//bouncing side to side
+		//bouncing on right
 		
-		if(t.getPoint().x > xMax - t.getRadius() * 2 || t.getPoint().x < 0){
+		if(t.getPoint().x > xMax - t.getRadius() * 2){
+			t.setPoint(new Point(xMax - t.getRadius() * 2,t.getPoint().y));
+			t.setHV(t.getHV() * -1);
+		}
+		
+		//bouncing on left
+		if(t.getPoint().x < 0){
+			t.setPoint(new Point(0,t.getPoint().y));
 			t.setHV(t.getHV() * -1);
 		}
 		
