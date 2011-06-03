@@ -20,8 +20,8 @@ public class SwingRunner {
 		
 //Physics initialization
 		
-		int width = 640;
-		int height = 480;
+		int width = 1024;
+		int height = 768;
 		
 		Physics p = new Physics(width, height);
 		/*Thing t = new Thing(1,15,0,4,Color.RED);
