@@ -1,13 +1,14 @@
 
 package physicsSim;
+
 import java.awt.Color;
 import java.awt.Point;
+import java.util.ArrayList;
 import java.util.Random;
-import java.util.Vector;
-
-
 
 public class Thing {
+	
+////////////////////////////////////////Fields////////////////////////////////////////
 	private Color c;
 	private double mass;
 	private int radius;
@@ -15,7 +16,13 @@ public class Thing {
 	private double hVelocity;
 	private int time;
 	private Point p;
+	private boolean collOn;
+	private long id;
+	private ArrayList<Long> collIds;
+
 	
+	
+//////////////////////////////////////Initialization///////////////////////////////////////	
 	public Thing(){
 		mass = 10;
 		radius = 10;
@@ -25,6 +32,8 @@ public class Thing {
 		p = new Point(0,100);
 		//p = getClicked
 		time = 0;
+		collIds = new ArrayList<Long>();
+		
 	}
 	
 	public Thing(double m, int r, double vV, double hV, Color col) throws IllegalArgumentException{
@@ -38,6 +47,7 @@ public class Thing {
 		c = col;
 		p = new Point(0,100);
 		time = 0;
+		collIds = new ArrayList<Long>();
 	}
 	
 	public Thing(Color col){
@@ -48,17 +58,19 @@ public class Thing {
 		c = col;
 		p = new Point(0,0);
 		time = 0;
+		collIds = new ArrayList<Long>();
 	}
 	
 	public Thing (boolean random){
 		Random rand = new Random();
-		mass = 1;
 		radius = rand.nextInt(60) + 10;
+		mass = radius;
 		vVelocity = rand.nextInt(30);
 		hVelocity = rand.nextInt(30);
 		c = new Color(rand.nextInt(254) + 1, rand.nextInt(254) + 1, rand.nextInt(254) + 1);
 		p = new Point(rand.nextInt(580), rand.nextInt(420));
 		time = 0;
+		collIds = new ArrayList<Long>();
 	}
 	
 	public Thing(int x, int y){
@@ -69,21 +81,23 @@ public class Thing {
 		c = Color.red;
 		p = new Point(x,y);
 		time = 0;
+		collIds = new ArrayList<Long>();
 	}
 	
 	public Thing(boolean random, int x, int y){
 		Random rand = new Random();
-		mass = 1;
 		radius = rand.nextInt(60) + 10;
+		mass = radius;
 		vVelocity = 0;
 		hVelocity = 0;
 		c = new Color(rand.nextInt(254) + 1, rand.nextInt(254) + 1, rand.nextInt(254) + 1);
 		p = new Point(x, y);
 		time = 0;
+		collIds = new ArrayList<Long>();
 	}
 	
 	
-	
+////////////////////////////////////////// Set/Get ////////////////////////////////////////////////
 	public double getVV(){
 		return vVelocity;
 	}
@@ -124,13 +138,39 @@ public class Thing {
 		return c;
 	}
 	
+	public void setColor(Color color) {
+		c = color;
+	}
+	
+	public double getMass(){
+		return mass;
+	}
+	
+	public boolean getCollOn(){
+		return collOn;
+	}
+	
+	public void setCollOn(boolean a){
+		collOn = a;
+	}
+	
+	public void setId(long num){
+		id = num;
+	}
+	
+	public long getId(){
+		return id;
+	}
+	
+
+////////////////////////////////////////Physics and Vectors ///////////////////////////////////////////
 	public double getVAngle(){
 		double dv = getVV();
 		double dh = getHV();
 		double hyp = Math.sqrt(dv*dv + dh*dh);
 		return Math.acos(dh/hyp);
 	}
-	
+
 	public boolean isColliding(Thing other){
 		return (radius + other.getRadius() >= Math.sqrt(Math.pow(p.x + other.getPoint().x, 2))+ Math.pow(p.y + other.getPoint().y, 2));
 	}
@@ -151,13 +191,28 @@ public class Thing {
 			
 		}
 	}
-
-	public void setColor(Color color) {
-		c = color;
+	
+	public void collIdAdd(Thing other){
+		collIds.add(other.getId());
 	}
 	
-	public double getMass(){
-		return mass;
+	public void collIdRemove(Thing other){
+		for(long num : collIds){
+			if(num == other.getId()){
+				collIds.remove(collIds.indexOf(num));
+			}
+		}
 	}
+	
+	public boolean collOn(Thing other){
+		for(long num : collIds){
+			if(num == other.getId()){
+				return false;
+			}
+		
+		}
+		return true;
+	}
+
 	
 }
