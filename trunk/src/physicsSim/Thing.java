@@ -197,9 +197,9 @@ public class Thing {
 	}
 	
 	public void collIdRemove(Thing other){
-		for(long num : collIds){
-			if(num == other.getId()){
-				collIds.remove(collIds.indexOf(num));
+		for(int i = 0; i < collIds.size(); i++){
+			if(other.getId() == collIds.get(i)){
+				collIds.remove(i);
 			}
 		}
 	}
