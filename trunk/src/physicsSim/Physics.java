@@ -91,6 +91,56 @@ public class Physics {
 			t.setPoint(new Point(t.getPoint().x, yMax - 2 * t.getRadius() + 1));
 	}
 	
+	public boolean isColliding(Thing a, Thing b){
+		/*
+		 * System.out.println(a.getRadius() + b.getRadius());
+		 *System.out.println(Math.sqrt((Math.pow(a.getPoint().x - b.getPoint().x, 2)) + (Math.pow(a.getPoint().y - b.getPoint().y, 2))));
+		 *System.out.println("----------");
+		 */
+		return (a.getRadius() + b.getRadius() > Math.sqrt((Math.pow(a.getPoint().x - b.getPoint().x, 2)) + (Math.pow(a.getPoint().y - b.getPoint().y, 2))));
+		
+	}
+	
+	public void collision(Thing a, Thing b){
+		//Momentum and Velocity
+		double m1 = a.getMass();
+		double m2 = b.getMass();
+		
+		Vector av = new Vector (a.getHV(), a.getVV());
+		Vector bv = new Vector (b.getHV(), b.getVV());
+		
+		double v1 = av.getMagnitude();
+		double v2 = bv.getMagnitude();
+		
+		av.setMagnitude((v1 * (m1 - m2) + 2 * m2 * v2)/(m1 + m2));
+		bv.setMagnitude((v2 * (m2 - m1) + 2 * m1 * v1)/(m1 + m2));
+		
+		
+		
+		//Direction
+		
+		if(av.getMagnitude() >= bv.getMagnitude()){
+			av.setAngle(av.getAngle() + 180);
+		}else if(bv.getMagnitude() > av.getMagnitude()){
+			bv.setAngle(bv.getAngle() + 180);
+		}
+		
+		av.magnitudeToThing(a);
+		bv.magnitudeToThing(b);
+		
+		//Intersecting check
+		
+		//while(isColliding(a, b)){
+		//	a.setPoint(new Point((int)(a.getPoint().x + a.getHV()), (int)(a.getPoint().y + a.getVV())));
+		//	a.setPoint(new Point((int)(b.getPoint().x + b.getHV()), (int)(b.getPoint().y + b.getVV())));
+		//}
+		
+		
+		
+		
+	}
+	
+	
 /*	public void collision(Thing t1, Thing t2){
 		int r1 = t1.getRadius();
 		int r2 = t2.getRadius();
@@ -107,12 +157,11 @@ public class Physics {
 		}
 	}*/
 	
-	public boolean isColliding(Thing a, Thing b){
-		return (a.getRadius() + b.getRadius() >= Math.sqrt((Math.pow(a.getPoint().x - b.getPoint().x, 2)) + (Math.pow(a.getPoint().y - b.getPoint().y, 2)))); 
-	}
 	
-	public void collisionVelocity (Thing a, Thing b){
-		Vector av = new Vector (a.getHV(), a.getVV());
+	
+	/*
+	    public void collisionVelocity (Thing a, Thing b){
+	    Vector av = new Vector (a.getHV(), a.getVV());
 		Vector bv = new Vector (b.getHV(), b.getVV());
 		
 		av.setMagnitude((av.getMagnitude() * (a.getMass() - b.getMass()) + (2 * b.getMass() * bv.getMagnitude())) / (a.getMass() + b.getMass()));
@@ -123,6 +172,7 @@ public class Physics {
 		b.setHV(bv.getVecHV());
 		b.setVV(bv.getVecVV());
 	}
+	*/
 	
 	public void collisionDirection(Thing a, Thing b){
 		Vector av = new Vector (a.getHV(), a.getVV());
