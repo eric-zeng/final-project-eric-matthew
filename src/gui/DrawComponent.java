@@ -1,15 +1,11 @@
 package gui;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
-import java.util.Random;
-
-import javax.swing.JButton;
 import javax.swing.JComponent;
 
 import physicsSim.*;
@@ -33,18 +29,33 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 	public void updatePositions(){
 		for(int i = 0; i < things.size(); i++){
 			Thing t = things.get(i);
+			for(int j = i + 1; j < things.size(); j++){
+				Thing test = things.get(j);
+				if(p.isColliding(t, test) && t.collOn(test) && test.collOn(t)){
+					t.collIdAdd(test);
+					test.collIdAdd(t);
+					p.collision(t, test);
+				}
+			}			
 			p.bounce(t);
 			p.gravity(t);
 			p.lateralMove(t);
-			for(int j = i + 1; j < things.size(); j++){
-				Thing test = things.get(j);
-			//	Random r = new Random();
-				if(p.isColliding(t,test)){
-				//	p.collisionVelocity(t, test);
-				}
-			}
+			
+			
 			
 		}
+		for(int i = 0; i < things.size(); i++){
+			Thing t = things.get(i);
+			for(int j = i + 1; j < things.size(); j++){
+				Thing test = things.get(j);	
+				if(!p.isColliding(t, test)){
+					t.collIdRemove(test);
+					test.collIdRemove(t);
+				}
+					
+			}
+		}
+		
 		time++;
 		repaint();
 	}
@@ -74,7 +85,7 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 		if(e.getButton() == 1){
 			things.add(new Thing(true, e.getX(), e.getY()));
 		}else if(e.getButton() == 3){
-			addThirty();
+			addBalls(25);
 		}
 	}
 
@@ -150,9 +161,20 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 	public void mouseMoved(MouseEvent e) {
 	}
 	
-	public void addThirty(){
-		for(int i = 0; i < 30; i++){
-			things.add(new Thing(true));
+	public void addBalls(int num){
+		for(int i = 0; i < num; i++){
+			Thing t = new Thing(true);
+			t.setId(things.size());
+			things.add(t);
+			
+		}
+	}
+	
+	public void removeBalls(int num){
+		int counter = 0;
+		while(things.size() > 0 && counter < num){
+			things.remove(0);
+			counter++;
 		}
 	}
 
