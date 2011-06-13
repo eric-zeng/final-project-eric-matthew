@@ -36,4 +36,11 @@ public class Vector {
 	public void setMagnitude (double magnitude){
 		this.magnitude = magnitude;
 	}
+	
+	public void magnitudeToThing(Thing a){
+		a.setHV(getVecHV());
+		a.setVV(getVecVV());
+	}
+	
+
 }
