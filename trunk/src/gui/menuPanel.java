@@ -21,6 +21,7 @@ public class menuPanel extends JPanel implements ActionListener{
 	private JTextField staticText2;
 	private JTextField text2;
 	private int ballNum2;
+	private JButton b3;
 	
 	public menuPanel(JComponent comp){
 		ballNum = 1;
@@ -63,15 +64,23 @@ public class menuPanel extends JPanel implements ActionListener{
             }
 		});
 		
-		b2 = new JButton("Have fun!!!");
+		b3 = new JButton("Change Background Color");
+		add(b3);
+		b3.addActionListener(this);
+		b3.setActionCommand("background");
+		
+		b2 = new JButton("Make Happiness!!!");
 		add(b2);
 		b2.setEnabled(false);
+		
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if("addBalls".equals(e.getActionCommand())){
 			((DrawComponent) c).addBalls(ballNum);
 		}else if("removeBalls".equals(e.getActionCommand())){
+			((DrawComponent) c).removeBalls(ballNum);
+		}else if("background".equals(e.getActionCommand())){
 			((DrawComponent) c).removeBalls(ballNum);
 		}
 		
