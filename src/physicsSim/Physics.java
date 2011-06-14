@@ -135,11 +135,16 @@ public class Physics {
 			double requiredDist = a.getRadius() + b.getRadius();
 			
 			double diff = requiredDist - dist;
-			av.setMagnitude(av.getMagnitude() + diff / 2);
-			bv.setMagnitude(bv.getMagnitude() + diff / 2);
 			
-			av.magnitudeToThing(a);
-			bv.magnitudeToThing(b);
+			double newAHV = Math.sin(av.getAngle()) * diff;
+			double newAVV = Math.cos(av.getAngle()) * diff;
+			
+			a.setPoint(new Point((int)(a.getPoint().x + newAHV), (int)(a.getPoint().y + newAVV)));
+			
+			double newBHV = Math.sin(bv.getAngle()) * diff;
+			double newBVV = Math.cos(bv.getAngle()) * diff;
+			
+			b.setPoint(new Point((int)(b.getPoint().x + newBHV), (int)(b.getPoint().y + newBVV)));
 		}
 		
 		
