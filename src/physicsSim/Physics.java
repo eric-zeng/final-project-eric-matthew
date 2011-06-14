@@ -136,13 +136,13 @@ public class Physics {
 			
 			double diff = requiredDist - dist;
 			
-			double newAHV = Math.sin(av.getAngle()) * diff;
-			double newAVV = Math.cos(av.getAngle()) * diff;
+			double newAHV = Math.sin(av.getAngle()) * 2 * diff;
+			double newAVV = Math.cos(av.getAngle()) * 2 * diff;
 			
 			a.setPoint(new Point((int)(a.getPoint().x + newAHV), (int)(a.getPoint().y + newAVV)));
 			
-			double newBHV = Math.sin(bv.getAngle()) * diff;
-			double newBVV = Math.cos(bv.getAngle()) * diff;
+			double newBHV = Math.sin(bv.getAngle()) * 2 * diff;
+			double newBVV = Math.cos(bv.getAngle()) * 2 * diff;
 			
 			b.setPoint(new Point((int)(b.getPoint().x + newBHV), (int)(b.getPoint().y + newBVV)));
 		}
@@ -186,6 +186,7 @@ public class Physics {
 	}
 	*/
 	
+	/*
 	public void collisionDirection(Thing a, Thing b){
 		Vector av = new Vector (a.getHV(), a.getVV());
 		Vector bv = new Vector (b.getHV(), b.getVV());
@@ -201,5 +202,7 @@ public class Physics {
 		b.setVV(bv.getVecVV());
 		
 	}
+	
+	*/
 	
 }
