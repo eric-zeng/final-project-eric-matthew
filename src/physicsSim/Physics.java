@@ -119,9 +119,9 @@ public class Physics {
 		
 		//Direction
 		
-		if(av.getMagnitude() >= bv.getMagnitude()){
+		if(Math.abs(av.getMagnitude()) >= Math.abs(bv.getMagnitude())){
 			av.setAngle(av.getAngle() + 180);
-		}else if(bv.getMagnitude() > av.getMagnitude()){
+		}else if(Math.abs(bv.getMagnitude()) > Math.abs(av.getMagnitude())){
 			bv.setAngle(bv.getAngle() + 180);
 		}
 		
@@ -130,10 +130,7 @@ public class Physics {
 		
 		//Intersecting check
 		
-		if(isColliding(a, b)){
-			a.setPoint(new Point((int)(a.getPoint().x + a.getHV()), (int)(a.getPoint().y + a.getVV())));
-			a.setPoint(new Point((int)(b.getPoint().x + b.getHV()), (int)(b.getPoint().y + b.getVV())));
-		}
+		
 		
 		
 		
