@@ -130,7 +130,17 @@ public class Physics {
 		
 		//Intersecting check
 		
-		
+		if(isColliding(a, b)){
+			double dist = Math.sqrt((Math.pow(a.getPoint().x - b.getPoint().x, 2)) + (Math.pow(a.getPoint().y - b.getPoint().y, 2)));
+			double requiredDist = a.getRadius() + b.getRadius();
+			
+			double diff = requiredDist - dist;
+			av.setMagnitude(av.getMagnitude() + diff / 2);
+			bv.setMagnitude(bv.getMagnitude() + diff / 2);
+			
+			av.magnitudeToThing(a);
+			bv.magnitudeToThing(b);
+		}
 		
 		
 		
