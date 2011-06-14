@@ -30,6 +30,10 @@ public class Vector {
 	}
 	
 	public void setAngle(double angle){
+		if(angle >= 360)
+			angle -= 360;
+		else if(angle < 0)
+			angle += 360;
 		this.angle = angle;
 	}
 	
