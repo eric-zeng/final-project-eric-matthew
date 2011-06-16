@@ -23,6 +23,8 @@ public class menuPanel extends JPanel implements ActionListener{
 	private JTextField staticText2;
 	private JTextField text2;
 	private int ballNum2;
+
+	private JTextField ballCounter;
 	//private JButton b3;
 	
 	public menuPanel(JComponent comp){
@@ -80,10 +82,13 @@ public class menuPanel extends JPanel implements ActionListener{
 		b3.addActionListener(this);
 		b3.setActionCommand("background");*/
 		
+		ballCounter = new JTextField("Total Balls: " + ((DrawComponent)c).getTotalBalls(), 10);
+		ballCounter.setEditable(false);
+		add(ballCounter);
+		
 		b2 = new JButton("Make Happiness!!!");
 		add(b2);
 		b2.setEnabled(false);
-		
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
