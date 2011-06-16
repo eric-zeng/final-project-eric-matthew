@@ -29,14 +29,10 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 	public void updatePositions(){
 		for(int i = 0; i < things.size(); i++){
 			Thing t = things.get(i);
+			//t.capVelocity();
 			for(int j = i + 1; j < things.size(); j++){
-				Thing test = things.get(j);
-				//if(p.isColliding(t, test) && t.collOn(test) && test.collOn(t)){
-					
+				Thing test = things.get(j);					
 				if(p.isColliding(t, test)){
-					System.out.println("Colliding");
-					//t.collIdAdd(test);
-					//test.collIdAdd(t);
 					p.collision(t, test);
 				}
 			}			
@@ -47,19 +43,7 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 			
 			
 		}
-		/* for(int i = 0; i < things.size(); i++){
-			Thing t = things.get(i);
-			for(int j = i + 1; j < things.size(); j++){
-				Thing test = things.get(j);	
-				if(!p.isColliding(t, test)){
-					t.collIdRemove(test);
-					test.collIdRemove(t);
-				}
-					
-			}
-		} */
 		
-		time++;
 		repaint();
 	}
 	
@@ -74,7 +58,7 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 		}
 		
 		try { 
-            Thread.sleep(16); 
+            Thread.sleep(1); 
         } catch (InterruptedException e) {}
         
 		updatePositions();
@@ -172,7 +156,7 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 	public void addBalls(int num){
 		for(int i = 0; i < num; i++){
 			Thing t = new Thing(true);
-			t.setId(things.size());
+
 			things.add(t);
 			
 		}
