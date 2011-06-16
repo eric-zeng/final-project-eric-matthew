@@ -32,7 +32,7 @@ public class menuPanel extends JPanel implements ActionListener{
 	private JCheckBox colButton;
 
 //	private JTextField collision;
-	private JButton b3;
+	//private JButton b3;
 	
 	public menuPanel(JComponent comp){
 		ballNum = 1;
@@ -111,7 +111,7 @@ public class menuPanel extends JPanel implements ActionListener{
 			public void itemStateChanged(ItemEvent e) {
 			    Object source = e.getItemSelectable();
 			    if (source == colButton) {
-			        System.out.println("hiPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP");
+			        ((DrawComponent)c).setCol(!((DrawComponent)c).getCol());
 			    }
 			}
 		});
@@ -120,12 +120,6 @@ public class menuPanel extends JPanel implements ActionListener{
 		b2 = new JButton("Make Happiness!!!");
 		add(b2);
 		b2.setEnabled(false);
-		
-		b3 = new JButton("Remove All Balls");
-		add(b3);
-		b3.addActionListener(this);
-		b3.setActionCommand("removeAll");
-		
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -133,8 +127,6 @@ public class menuPanel extends JPanel implements ActionListener{
 			((DrawComponent) c).addBalls(ballNum);
 		}else if("removeBalls".equals(e.getActionCommand())){
 			((DrawComponent) c).removeBalls(ballNum);
-		}else if("removeAll".equals(e.getActionCommand())){
-			((DrawComponent) c).removeBalls(((DrawComponent) c).getTotalBalls());
 		}
 		
 	}	
