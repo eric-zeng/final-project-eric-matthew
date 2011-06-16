@@ -18,6 +18,7 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 	private int time;
 	private int timeStart;
 	private Point startPoint;
+	private boolean col;
 		
 	public DrawComponent(ArrayList<Thing> things, Physics p){
 		this.things = things;
@@ -29,25 +30,45 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 	public void updatePositions(){
 		for(int i = 0; i < things.size(); i++){
 			Thing t = things.get(i);
-			//t.capVelocity();
-			for(int j = i + 1; j < things.size(); j++){
-				Thing test = things.get(j);					
-				if(p.isColliding(t, test)){
-					p.collision(t, test);
-				}
-			}			
 			p.bounce(t);
 			p.gravity(t);
 			p.lateralMove(t);
+			if(col){	
+				for(int j = i + 1; j < things.size(); j++){
+					Thing test = things.get(j);
+					//if(p.isColliding(t, test) && t.collOn(test) && test.collOn(t)){
+					if(p.isColliding(t, test)){
+						System.out.println(p.isColliding(test,t));
+						//System.out.println("Colliding");
+						//t.collIdAdd(test);
+						//test.collIdAdd(t);
+						p.collision(t, test);
+					}
+				}
+			}
+			
 			
 			
 			
 		}
+		/* for(int i = 0; i < things.size(); i++){
+			Thing t = things.get(i);
+			for(int j = i + 1; j < things.size(); j++){
+				Thing test = things.get(j);	
+				if(!p.isColliding(t, test)){
+					t.collIdRemove(test);
+					test.collIdRemove(t);
+				}
+					
+			}
+		} */
 		
+		time++;
 		repaint();
 	}
 	
 	public void paintComponent(Graphics g){
+		g.drawRect(0, 0, 640, 480);
 		for(Thing t : things){
 			int x = t.getPoint().x;
 			int y = t.getPoint().y;
@@ -58,7 +79,7 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 		}
 		
 		try { 
-            Thread.sleep(1); 
+            Thread.sleep(100); 
         } catch (InterruptedException e) {}
         
 		updatePositions();
@@ -115,7 +136,7 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 				
 				//if the mouse is in the square around the circle
 				if((startPoint.x > p.x) && (startPoint.x < p.x + d) &&
-						(startPoint.y > p.y) && (startPoint.y < p.y + d)){
+					(startPoint.y > p.y) && (startPoint.y < p.y + d)){
 					
 			//		System.out.println("HIIIIIIIIIIIII # 3");
 					double vV = (current.y - startPoint.y) / (double)timeDif;
@@ -128,8 +149,7 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 				
 			}
 			
-		}
-		
+		}		
 	}
 
 	@Override
@@ -156,7 +176,7 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 	public void addBalls(int num){
 		for(int i = 0; i < num; i++){
 			Thing t = new Thing(true);
-
+			t.setId(things.size());
 			things.add(t);
 			
 		}
@@ -173,5 +193,12 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 	public int getTotalBalls(){
 		return things.size();
 	}
-
+	
+	public void setCol(boolean c){
+		col = c;
+	}
+	
+	public boolean getCol(){
+		return col;
+	}
 }
