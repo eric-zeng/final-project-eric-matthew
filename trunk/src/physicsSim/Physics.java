@@ -92,11 +92,6 @@ public class Physics {
 	}
 	
 	public boolean isColliding(Thing a, Thing b){
-		/*
-		 * System.out.println(a.getRadius() + b.getRadius());
-		 *System.out.println(Math.sqrt((Math.pow(a.getPoint().x - b.getPoint().x, 2)) + (Math.pow(a.getPoint().y - b.getPoint().y, 2))));
-		 *System.out.println("----------");
-		 */
 		return (a.getRadius() + b.getRadius() > Math.sqrt((Math.pow(a.getPoint().x - b.getPoint().x, 2)) + (Math.pow(a.getPoint().y - b.getPoint().y, 2))));
 		
 	}
