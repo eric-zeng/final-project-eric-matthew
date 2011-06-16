@@ -25,14 +25,13 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 		this.p = p;
 		addMouseListener(this);
 		addMouseMotionListener(this);
+		col = true;
 	}
 	
 	public void updatePositions(){
 		for(int i = 0; i < things.size(); i++){
 			Thing t = things.get(i);
-			p.bounce(t);
-			p.gravity(t);
-			p.lateralMove(t);
+			
 			if(col){	
 				for(int j = i + 1; j < things.size(); j++){
 					Thing test = things.get(j);
@@ -47,7 +46,9 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 				}
 			}
 			
-			
+			p.bounce(t);
+			p.gravity(t);
+			p.lateralMove(t);
 			
 			
 		}
@@ -79,7 +80,7 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 		}
 		
 		try { 
-            Thread.sleep(100); 
+            Thread.sleep(16); 
         } catch (InterruptedException e) {}
         
 		updatePositions();
