@@ -1,10 +1,12 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -21,10 +23,11 @@ public class menuPanel extends JPanel implements ActionListener{
 	private JTextField staticText2;
 	private JTextField text2;
 	private int ballNum2;
-	private JButton b3;
+	//private JButton b3;
 	
 	public menuPanel(JComponent comp){
 		ballNum = 1;
+		ballNum2 = 1;
 		c = comp;
 		/*b = new JButton("Add more balls!!!");
 		add(b);
@@ -45,8 +48,12 @@ public class menuPanel extends JPanel implements ActionListener{
 		add(text);
 		text.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-            	ballNum = Integer.parseInt(text.getText());
-            	((DrawComponent)c).addBalls(ballNum);
+            	try{
+            		ballNum = Integer.parseInt(text.getText());
+            		((DrawComponent)c).addBalls(ballNum);
+            	}catch(NumberFormatException derp){
+            		text.setText("" + ballNum);
+            	}
             }
 		});
 		
@@ -59,15 +66,19 @@ public class menuPanel extends JPanel implements ActionListener{
 		add(text2);
 		text2.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-            	ballNum2 = Integer.parseInt(text2.getText());
-            	((DrawComponent)c).removeBalls(ballNum2);
+	            try{
+					ballNum2 = Integer.parseInt(text2.getText());
+	            	((DrawComponent)c).removeBalls(ballNum2);
+	            }catch(NumberFormatException derp){
+            		text2.setText("" + ballNum2);
+            	}
             }
 		});
 		
-		b3 = new JButton("Change Background Color");
+	/*	b3 = new JButton("Change Background Color");
 		add(b3);
 		b3.addActionListener(this);
-		b3.setActionCommand("background");
+		b3.setActionCommand("background");*/
 		
 		b2 = new JButton("Make Happiness!!!");
 		add(b2);
@@ -79,8 +90,6 @@ public class menuPanel extends JPanel implements ActionListener{
 		if("addBalls".equals(e.getActionCommand())){
 			((DrawComponent) c).addBalls(ballNum);
 		}else if("removeBalls".equals(e.getActionCommand())){
-			((DrawComponent) c).removeBalls(ballNum);
-		}else if("background".equals(e.getActionCommand())){
 			((DrawComponent) c).removeBalls(ballNum);
 		}
 		
