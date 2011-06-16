@@ -64,7 +64,6 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 	}
 	
 	public void paintComponent(Graphics g){
-		g.drawRect(0, 0, 640, 480);
 		for(Thing t : things){
 			int x = t.getPoint().x;
 			int y = t.getPoint().y;
