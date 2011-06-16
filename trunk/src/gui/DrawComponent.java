@@ -186,5 +186,9 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 			counter++;
 		}
 	}
+	
+	public int getTotalBalls(){
+		return things.size();
+	}
 
 }
