@@ -3,8 +3,11 @@ package gui;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -25,12 +28,20 @@ public class menuPanel extends JPanel implements ActionListener{
 	private int ballNum2;
 
 	private JTextField ballCounter;
+
+	private JCheckBox colButton;
+
+//	private JTextField collision;
 	//private JButton b3;
 	
 	public menuPanel(JComponent comp){
 		ballNum = 1;
 		ballNum2 = 1;
 		c = comp;
+		
+		ballCounter = new JTextField("Total Balls: " + ((DrawComponent)c).getTotalBalls(), 10);
+		ballCounter.setEditable(false);
+		
 		/*b = new JButton("Add more balls!!!");
 		add(b);
 		b.addActionListener(this);
@@ -52,7 +63,12 @@ public class menuPanel extends JPanel implements ActionListener{
             public void actionPerformed(ActionEvent e){
             	try{
             		ballNum = Integer.parseInt(text.getText());
-            		((DrawComponent)c).addBalls(ballNum);
+            		if(((DrawComponent)c).getTotalBalls() + ballNum < 500){
+            			((DrawComponent)c).addBalls(ballNum);
+                		ballCounter.setText("Total Balls: " + ((DrawComponent)c).getTotalBalls());
+					}else{
+						text.setText("" + 1);
+					}
             	}catch(NumberFormatException derp){
             		text.setText("" + ballNum);
             	}
@@ -71,6 +87,7 @@ public class menuPanel extends JPanel implements ActionListener{
 	            try{
 					ballNum2 = Integer.parseInt(text2.getText());
 	            	((DrawComponent)c).removeBalls(ballNum2);
+	            	ballCounter.setText("Total Balls: " + ((DrawComponent)c).getTotalBalls());
 	            }catch(NumberFormatException derp){
             		text2.setText("" + ballNum2);
             	}
@@ -82,9 +99,23 @@ public class menuPanel extends JPanel implements ActionListener{
 		b3.addActionListener(this);
 		b3.setActionCommand("background");*/
 		
-		ballCounter = new JTextField("Total Balls: " + ((DrawComponent)c).getTotalBalls(), 10);
-		ballCounter.setEditable(false);
 		add(ballCounter);
+		
+		/*collision = new JTextField("Collision", 10);
+		collision.setEditable(false);
+		add(collision);*/
+		
+		colButton = new JCheckBox("Collision");
+		colButton.setSelected(true);
+		colButton.addItemListener(new ItemListener(){
+			public void itemStateChanged(ItemEvent e) {
+			    Object source = e.getItemSelectable();
+			    if (source == colButton) {
+			        System.out.println("hiPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP");
+			    }
+			}
+		});
+		add(colButton);
 		
 		b2 = new JButton("Make Happiness!!!");
 		add(b2);
@@ -98,6 +129,5 @@ public class menuPanel extends JPanel implements ActionListener{
 			((DrawComponent) c).removeBalls(ballNum);
 		}
 		
-	}
-	
+	}	
 }
