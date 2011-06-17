@@ -124,7 +124,7 @@ public class Physics {
 		bv.magnitudeToThing(b);
 		
 		//Intersecting check
-		
+		/*
 		if(isColliding(a, b)){
 			double dist = Math.sqrt((Math.pow(a.getPoint().x - b.getPoint().x, 2)) + (Math.pow(a.getPoint().y - b.getPoint().y, 2)));
 			double requiredDist = a.getRadius() + b.getRadius();
@@ -140,9 +140,17 @@ public class Physics {
 			double newBVV = Math.cos(bv.getAngle()) * 2 * diff;
 			
 			b.setPoint(new Point((int)(b.getPoint().x + newBHV), (int)(b.getPoint().y + newBVV)));
-		}
+		} */
 		
 		
+		
+		
+	}
+	
+	public void predictColl(Thing t){
+		Point backupPoint = new Point(t.getPoint().x, t.getPoint().y);
+		double backupVV = t.getVV();
+		double backupHV = t.getHV();
 		
 		
 	}
