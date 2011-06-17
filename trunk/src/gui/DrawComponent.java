@@ -19,6 +19,7 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 	private int timeStart;
 	private Point startPoint;
 	private boolean col;
+	private menuPanel m;
 		
 	public DrawComponent(ArrayList<Thing> things, Physics p){
 		this.things = things;
@@ -88,6 +89,7 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 			things.add(newThing);
 		}else if(e.getButton() == 3){
 			addBalls(25);
+			m.rightClickAdd();
 		}
 	}
 
@@ -193,5 +195,9 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 	
 	public ArrayList<Thing> getList(){
 		return things;
+	}
+	
+	public void menuPanelAddToTotal(menuPanel menu){
+		m = menu;
 	}
 }
