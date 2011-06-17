@@ -12,7 +12,7 @@ import physicsSim.*;
 
 public class DrawComponent extends JComponent implements MouseListener, MouseMotionListener{
 	
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1;
 	private ArrayList<Thing> things;
 	private Physics p;
 	private int time;
@@ -35,12 +35,10 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 			if(col){	
 				for(int j = i + 1; j < things.size(); j++){
 					Thing test = things.get(j);
-					//if(p.isColliding(t, test) && t.collOn(test) && test.collOn(t)){
+			
 					if(p.isColliding(t, test)){
 						System.out.println(p.isColliding(test,t));
-						//System.out.println("Colliding");
-						//t.collIdAdd(test);
-						//test.collIdAdd(t);
+					
 						p.collision(t, test);
 					}
 				}
@@ -52,17 +50,7 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 			
 			
 		}
-		/* for(int i = 0; i < things.size(); i++){
-			Thing t = things.get(i);
-			for(int j = i + 1; j < things.size(); j++){
-				Thing test = things.get(j);	
-				if(!p.isColliding(t, test)){
-					t.collIdRemove(test);
-					test.collIdRemove(t);
-				}
-					
-			}
-		} */
+		
 		
 		time++;
 		repaint();
@@ -201,5 +189,9 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 	
 	public boolean getCol(){
 		return col;
+	}
+	
+	public ArrayList<Thing> getList(){
+		return things;
 	}
 }
