@@ -1,4 +1,6 @@
 package physicsSim;
+import gui.DrawComponent;
+
 import java.awt.Point;
 
 
@@ -8,6 +10,7 @@ public class Physics {
 	private double acceleration;
 	private int xMax;
 	private int yMax;
+	private DrawComponent c;
 
 	
 	//private double velocity;
@@ -92,7 +95,7 @@ public class Physics {
 	}
 	
 	public boolean isColliding(Thing a, Thing b){
-		return (a.getRadius() + b.getRadius() > Math.sqrt((Math.pow(a.getPoint().x - b.getPoint().x, 2)) + (Math.pow(a.getPoint().y - b.getPoint().y, 2))));
+		return (a.getRadius() + b.getRadius() > Math.sqrt((Math.pow(a.getPoint().x + a.getRadius() - b.getPoint().x - b.getRadius(), 2)) + (Math.pow(a.getPoint().y + a.getRadius()- b.getPoint().y - b.getRadius(), 2))));
 		
 	}
 	
@@ -152,7 +155,12 @@ public class Physics {
 		double backupVV = t.getVV();
 		double backupHV = t.getHV();
 		
+		gravity(t);
+		lateralMove(t);
 		
+		for(Thing other: ((DrawComponent)c).getList()){
+			
+		}
 	}
 	
 	
