@@ -135,5 +135,9 @@ public class menuPanel extends JPanel implements ActionListener{
 			((DrawComponent) c).removeBalls(((DrawComponent)c).getTotalBalls());
 		}
 		
-	}	
+	}
+	
+	public void rightClickAdd(){
+		ballCounter.setText("Total Balls: " + ((DrawComponent)c).getTotalBalls());
+	}
 }
