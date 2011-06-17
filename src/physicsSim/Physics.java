@@ -159,7 +159,9 @@ public class Physics {
 		lateralMove(t);
 		
 		for(Thing other: ((DrawComponent)c).getList()){
-			
+			if(isColliding(t, other)){
+				
+			}
 		}
 	}
 	
