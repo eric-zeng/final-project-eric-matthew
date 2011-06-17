@@ -31,6 +31,8 @@ public class menuPanel extends JPanel implements ActionListener{
 
 	private JCheckBox colButton;
 
+	private JButton b3;
+
 //	private JTextField collision;
 	//private JButton b3;
 	
@@ -94,10 +96,7 @@ public class menuPanel extends JPanel implements ActionListener{
             }
 		});
 		
-	/*	b3 = new JButton("Change Background Color");
-		add(b3);
-		b3.addActionListener(this);
-		b3.setActionCommand("background");*/
+	
 		
 		add(ballCounter);
 		
@@ -117,6 +116,11 @@ public class menuPanel extends JPanel implements ActionListener{
 		});
 		add(colButton);
 		
+		b3 = new JButton("Remove all balls");
+		add(b3);
+		b3.addActionListener(this);
+		b3.setActionCommand("removeAll");
+		
 		b2 = new JButton("Make Happiness!!!");
 		add(b2);
 		b2.setEnabled(false);
@@ -127,6 +131,8 @@ public class menuPanel extends JPanel implements ActionListener{
 			((DrawComponent) c).addBalls(ballNum);
 		}else if("removeBalls".equals(e.getActionCommand())){
 			((DrawComponent) c).removeBalls(ballNum);
+		}else if("removeAll".equals(e.getActionCommand())){
+			((DrawComponent) c).removeBalls(((DrawComponent)c).getTotalBalls());
 		}
 		
 	}	
