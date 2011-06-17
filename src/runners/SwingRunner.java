@@ -59,6 +59,7 @@ public class SwingRunner {
 	//	menuPanel.add(b);
 		f2.add(menuPanel);
 		f2.setVisible(true);
+		((DrawComponent) c).menuPanelAddToTotal((menuPanel)menuPanel);
 		
 		//f2.add(new JButton("hello"));
 	}
