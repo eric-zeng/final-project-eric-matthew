@@ -161,5 +161,7 @@ public class Thing {
 	public long getId(){
 		return id;
 	}
+
+	
 	
 }
