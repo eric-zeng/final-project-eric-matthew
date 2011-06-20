@@ -33,6 +33,10 @@ public class menuPanel extends JPanel implements ActionListener{
 
 	private JButton b3;
 
+	private JTextField staticText3;
+
+	private JTextField staticText4;
+
 //	private JTextField collision;
 	//private JButton b3;
 	
@@ -121,6 +125,13 @@ public class menuPanel extends JPanel implements ActionListener{
 		b3.addActionListener(this);
 		b3.setActionCommand("removeAll");
 		
+		staticText3 = new JTextField("Left click to add one ball", 12);
+		staticText3.setEditable(false);
+		add(staticText3);
+		staticText4 = new JTextField("Right click to add 25 balls", 13);
+		staticText4.setEditable(false);
+		add(staticText4);
+		
 		b2 = new JButton("Make Happiness!!!");
 		add(b2);
 		b2.setEnabled(false);
@@ -133,6 +144,7 @@ public class menuPanel extends JPanel implements ActionListener{
 			((DrawComponent) c).removeBalls(ballNum);
 		}else if("removeAll".equals(e.getActionCommand())){
 			((DrawComponent) c).removeBalls(((DrawComponent)c).getTotalBalls());
+			ballCounter.setText("Total Balls: " + ((DrawComponent)c).getTotalBalls());
 		}
 		
 	}
