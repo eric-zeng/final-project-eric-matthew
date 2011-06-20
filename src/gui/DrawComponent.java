@@ -26,7 +26,7 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 		this.p = p;
 		addMouseListener(this);
 		addMouseMotionListener(this);
-		col = true;
+		col = false;
 	}
 	
 	public void updatePositions(){
