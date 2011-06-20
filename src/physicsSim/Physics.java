@@ -166,7 +166,7 @@ public class Physics {
 		
 		for(Thing other: ((DrawComponent)c).getList()){
 			int counter = 0;
-			while(isColliding(t, other) && counter < 30){
+			while(isColliding(t, other) && counter < 25){
 				x = x - .1 * t.getHV();
 				y = y - .1 * t.getVV();
 				
