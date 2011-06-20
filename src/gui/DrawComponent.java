@@ -33,14 +33,14 @@ public class DrawComponent extends JComponent implements MouseListener, MouseMot
 		for(int i = 0; i < things.size(); i++){
 			Thing t = things.get(i);
 			if(things.size() > 1)
-					p.predictColl(t);
+					
 			if(col){	
 				for(int j = i + 1; j < things.size(); j++){
 					Thing test = things.get(j);
 			
 					if(p.isColliding(t, test)){
 						System.out.println(p.isColliding(test,t));
-					
+						p.predictColl(t);
 						p.collision(t, test);
 					}
 				}
