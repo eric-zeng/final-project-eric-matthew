@@ -3,6 +3,8 @@ import gui.DrawComponent;
 
 import java.awt.Point;
 
+import javax.swing.JComponent;
+
 
 
 public class Physics {
@@ -151,18 +153,28 @@ public class Physics {
 	}
 	
 	public void predictColl(Thing t){
-		Point backupPoint = new Point(t.getPoint().x, t.getPoint().y);
+		/*Point backupPoint = new Point(t.getPoint().x, t.getPoint().y);
 		double backupVV = t.getVV();
-		double backupHV = t.getHV();
+		double backupHV = t.getHV();*/
+		
+		double x = t.getPoint().x;
+		double y = t.getPoint().y;
 		
 		gravity(t);
 		lateralMove(t);
 		
+		
 		for(Thing other: ((DrawComponent)c).getList()){
-			if(isColliding(t, other)){
-				
+			while(isColliding(t, other)){
+				x = x - .1 * t.getHV();
+				y = y - .1 * t.getVV();
+				t.setPoint(new Point((int)Math.round(x), (int)Math.round(y)));
 			}
 		}
+	}
+	
+	public void getDraw(JComponent c){
+		this.c = (DrawComponent) c;
 	}
 	
 	
