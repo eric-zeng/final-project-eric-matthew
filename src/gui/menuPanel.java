@@ -134,7 +134,7 @@ public class menuPanel extends JPanel implements ActionListener{
 		
 		b2 = new JButton("Make Happiness!!!");
 		add(b2);
-		b2.setEnabled(false);
+		b2.setEnabled(true);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
