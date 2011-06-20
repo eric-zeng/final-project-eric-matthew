@@ -97,7 +97,7 @@ public class Physics {
 	}
 	
 	public boolean isColliding(Thing a, Thing b){
-		return (a.getRadius() + b.getRadius() > Math.sqrt((Math.pow(a.getPoint().x + a.getRadius() - b.getPoint().x - b.getRadius(), 2)) + (Math.pow(a.getPoint().y + a.getRadius()- b.getPoint().y - b.getRadius(), 2))));
+		return (a.getRadius() + b.getRadius() >= Math.sqrt((Math.pow(a.getPoint().x + a.getRadius() - b.getPoint().x - b.getRadius(), 2)) + (Math.pow(a.getPoint().y + a.getRadius()- b.getPoint().y - b.getRadius(), 2))));
 		
 	}
 	
@@ -162,14 +162,22 @@ public class Physics {
 		
 		gravity(t);
 		lateralMove(t);
-		
+		//System.out.println(x + " " + y);
 		
 		for(Thing other: ((DrawComponent)c).getList()){
-			while(isColliding(t, other)){
+			int counter = 0;
+			while(isColliding(t, other) && counter < 30){
 				x = x - .1 * t.getHV();
 				y = y - .1 * t.getVV();
+				
+				
+				counter++;
+				
+				//x += 5;
+				//y += 5;
 				t.setPoint(new Point((int)Math.round(x), (int)Math.round(y)));
 			}
+			
 		}
 	}
 	
