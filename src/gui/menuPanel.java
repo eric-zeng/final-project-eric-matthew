@@ -109,7 +109,7 @@ public class menuPanel extends JPanel implements ActionListener{
 		add(collision);*/
 		
 		colButton = new JCheckBox("Collision");
-		colButton.setSelected(true);
+		colButton.setSelected(false);
 		colButton.addItemListener(new ItemListener(){
 			public void itemStateChanged(ItemEvent e) {
 			    Object source = e.getItemSelectable();
